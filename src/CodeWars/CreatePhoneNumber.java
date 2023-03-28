@@ -1,6 +1,7 @@
 package CodeWars;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class CreatePhoneNumber {
     public static void main(String[] args) {
@@ -24,5 +25,16 @@ public class CreatePhoneNumber {
         }
         System.out.println(sb.toString());
         return sb.toString();
+    }
+
+    public static String createPhoneNumberBest1(int[] numbers) {
+        return String.format("(%d%d%d) %d%d%d-%d%d%d%d", IntStream.of(numbers).boxed().toArray());
+    }
+
+    private static String PHONE_FORMAT = "(%d%d%d) %d%d%d-%d%d%d%d";
+
+    public static String createPhoneNumberBest2(int[] numbers) {
+        Integer[] numbersInt = Arrays.stream(numbers).boxed().toArray(Integer[]::new);
+        return String.format(PHONE_FORMAT, numbersInt);
     }
 }
