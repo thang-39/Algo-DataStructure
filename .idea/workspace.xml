@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3154d2f6-9453-4db1-bb83-514238b75630" name="Changes" comment="1st commit">
-      <change afterPath="$PROJECT_DIR$/src/CodeWars/CreatePhoneNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CodeWars/FindTheOddInt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,10 +35,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/learning/Algo-DataStructure"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.FindTheOddInt">
     <configuration name="CreatePhoneNumber" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CodeWars.CreatePhoneNumber" />
       <module name="CodeWars" />
@@ -51,8 +53,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FindTheOddInt" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CodeWars.FindTheOddInt" />
+      <module name="CodeWars" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeWars.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FindTheOddInt" />
         <item itemvalue="Application.CreatePhoneNumber" />
       </list>
     </recent_temporary>
