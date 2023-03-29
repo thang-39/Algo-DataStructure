@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3154d2f6-9453-4db1-bb83-514238b75630" name="Changes" comment="1st commit">
-      <change afterPath="$PROJECT_DIR$/src/CodeWars/FindTheOddInt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CodeWars/FindTheOddInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodeWars/FindTheOddInt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,5 +98,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1st commit" />
     <option name="LAST_COMMIT_MESSAGE" value="1st commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/CodeWars/FindTheOddInt.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
