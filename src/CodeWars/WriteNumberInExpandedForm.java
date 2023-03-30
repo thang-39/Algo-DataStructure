@@ -24,19 +24,21 @@ public class WriteNumberInExpandedForm {
         StringBuffer sb = new StringBuffer();
 
         int len = digitList.size();
+        int index = 0;
 
-        for (int i: digitList) {
-            while (len > 0) {
-                if (i != 0) {
-                    sb.append(i * (len -1) * 10);
-                    sb.append("+");
-                    len--;
-                }
-
-
+        while (len > 0) {
+            if (digitList.get(index) != 0) {
+                sb.append(digitList.get(index) * (int) Math.pow(10,--len));
+                sb.append(" + ");
+            } else {
+                len--;
             }
+            index++;
         }
 
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
 
         System.out.println(sb.toString());
 
