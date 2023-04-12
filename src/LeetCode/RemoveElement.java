@@ -33,6 +33,17 @@ public class RemoveElement {
     }
 
     public static int removeElement1(int[] nums, int val) {
+        int track = 0;
+        for (int num : nums) {
+            if (num != val) {
+                nums[track] = val;
+                track++;
+            }
+        }
+        return track;
+    }
+
+    public static int removeElement10(int[] nums, int val) {
         List<Integer> keepIndexes = new ArrayList<>();
 
         for (int i = 0; i < nums.length; i++) {
