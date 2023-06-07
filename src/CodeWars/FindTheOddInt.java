@@ -30,8 +30,7 @@ public class FindTheOddInt {
         int value;
         Map<Integer,Integer> map = new HashMap<>();
 
-
-        for (int i = 0; i < a.length; i++) {
+                for (int i = 0; i < a.length; i++) {
             if (map.containsKey(a[i])) {
                 value = map.get(a[i]);
                 map.remove(a[i]);
