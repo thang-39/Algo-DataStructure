@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-<<<<<<< HEAD
+//<<<<<<< HEAD
         String s = new String("hello");
-=======
+//=======
         String[] billyQuotes = {"For Brutus is an honourable man",
                 "Give me your hands if we be friends and Robin shall restore amends",
                 "Misery acquaints a man with strange bedfellows"};
@@ -47,6 +47,6 @@ public class Main {
 
 
 
->>>>>>> e810ce2094721dff5fff9677f292f85ca818b086
+//>>>>>>> e810ce2094721dff5fff9677f292f85ca818b086
     }
 }
