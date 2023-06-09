@@ -1,4 +1,4 @@
-package CrackingTheCodingInterview;
+package CrackingTheCodingInterview.arraysAndString;
 
 import java.util.Arrays;
 
