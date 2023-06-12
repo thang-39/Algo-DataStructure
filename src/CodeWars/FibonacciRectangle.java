@@ -8,13 +8,14 @@ import java.util.Optional;
 
 public class FibonacciRectangle {
 
-
     public static Map<BigInteger, BigInteger> fibonacciCache = new HashMap<>();
     public static void main(String[] args) {
         System.out.println(perimeter(BigInteger.valueOf(2)));
     }
     public static BigInteger perimeter(BigInteger n) {
-        return fibonacci(n.add(BigInteger.ONE)).multiply(BigInteger.TWO).add(fibonacci(n)).multiply(BigInteger.TWO);
+        return fibonacci(n.add(BigInteger.ONE))
+                .multiply(BigInteger.TWO)
+                .add(fibonacci(n)).multiply(BigInteger.TWO);
     }
 
 
@@ -31,7 +32,8 @@ public class FibonacciRectangle {
             return fibonacciCache.get(n);
         }
 
-        BigInteger nthFibonacciNum = fibonacci(n.subtract(BigInteger.TWO)).add(fibonacci(n.subtract(BigInteger.ONE)));
+        BigInteger nthFibonacciNum = fibonacci(n.subtract(BigInteger.TWO))
+                .add(fibonacci(n.subtract(BigInteger.ONE)));
         fibonacciCache.put(n, nthFibonacciNum);
         return nthFibonacciNum;
     }
