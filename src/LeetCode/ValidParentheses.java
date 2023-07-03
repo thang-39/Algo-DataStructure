@@ -22,7 +22,6 @@ public class ValidParentheses {
         map.put('[',']');
 
         for (char c : strArr) {
-
             if (map.containsKey(c)) {
                 stack.add(map.get(c));
             } else if (!stack.empty() && stack.peek() == c) {
@@ -30,7 +29,6 @@ public class ValidParentheses {
             } else {
                 return false;
             }
-
         }
 
         return stack.empty();
