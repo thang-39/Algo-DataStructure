@@ -50,7 +50,7 @@ public class HouseRobber {
     }
 
 
-    // db
+    // dp
     public static int rob(int[] nums) {
         int rob1 = 0;
         int rob2 = 0;
