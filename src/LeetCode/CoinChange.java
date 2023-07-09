@@ -22,7 +22,8 @@ public class CoinChange {
         if (min_coins >= (int) Math.pow(10,9)) return -1;
         else return min_coins;
     }
-    private static int recurrence(int[] coins, int remainingAmount, Map<Integer,Integer> cache) {
+    private static int recurrence(int[] coins, int remainingAmount,
+                                  Map<Integer,Integer> cache) {
         if (remainingAmount == 0) return 0;
         else if (cache.containsKey(remainingAmount)) {
             return cache.get(remainingAmount);
@@ -30,7 +31,8 @@ public class CoinChange {
             int min_coins = (int) Math.pow(10,9);
             for (int coin : coins) {
                 if (coin <= remainingAmount) {
-                    min_coins = Math.min(min_coins, 1 + recurrence(coins, remainingAmount - coin, cache));
+                    min_coins = Math.min(min_coins,
+                            1 + recurrence(coins, remainingAmount - coin, cache));
                 }
             }
             cache.put(remainingAmount, min_coins);
