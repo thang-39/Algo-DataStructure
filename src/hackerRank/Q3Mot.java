@@ -20,8 +20,7 @@ public class Q3Mot {
 
     public static int recursionJump(int index, List<Integer> arr, int k, int[] dp) {
 
-
-        for (int i = index -1; i >= 0; i--) {
+        for (int i = index; i >= 0; i--) {
             if (i+k >= arr.size()) {
                 dp[i] = arr.get(i);
 
@@ -30,7 +29,6 @@ public class Q3Mot {
 
             }
         }
-
         return Arrays.stream(dp).max().getAsInt();
     }
 }
