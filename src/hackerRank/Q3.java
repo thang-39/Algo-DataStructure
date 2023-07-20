@@ -5,21 +5,23 @@ import java.util.*;
 public class Q3 {
     public static void main(String[] args) {
 
-        System.out.println(gainMaxValue(List.of(1),2));
-        System.out.println(gainMaxValueThang(List.of(2,-3,4,6,1),2));
-        System.out.println(gainMaxValueThang(List.of(2,5,-8,-6,-7),3));
-        System.out.println(gainMaxValueThang(List.of(1),3));
+//        System.out.println(gainMaxValue(List.of(1), 2));
+//        System.out.println(gainMaxValueThang(List.of(2, -3, 4, 6, 1), 2));
+//        System.out.println(gainMaxValueThang(List.of(2, 5, -8, -6, -7), 3));
+//        System.out.println(gainMaxValueThang(List.of(1), 3));
 
-        System.out.println(gainMaxValue2(List.of(2,5,-8,-6,-7),3));
 
-        System.out.println(gainMaxValue2(List.of(2,-3,4,6,1),2));
+//        System.out.println(gainMaxValueGPTRecursion(List.of(2, 5, -8, -6, -7), 3));
+//
+//        System.out.println(gainMaxValueGPT(List.of(2, -3, 4, 6, 1), 2));
+//        System.out.println(gainMaxValueGPTRecursion(List.of(2, -3, 4, 6, 1), 2));
 
-        System.out.println(gainMaxValue2(List.of(1),2));
 
-        System.out.println(gainMaxValueGPTRecursion(List.of(2,5,-8,-6,-7),3));
+        System.out.println(gainMaxValue2(List.of(2, 5, -8, -6, -7), 3));
 
-        System.out.println(gainMaxValueGPT(List.of(2,-3,4,6,1),2));
-        System.out.println(gainMaxValueGPTRecursion(List.of(2,-3,4,6,1),2));
+        System.out.println(gainMaxValue2(List.of(2, -3, 4, 6, 1), 2));
+
+        System.out.println(gainMaxValue2(List.of(1), 2));
     }
 
     public static int gainMaxValueGPTRecursion(List<Integer> security, int k) {
