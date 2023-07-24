@@ -25,9 +25,9 @@ public class Lec12MaxFallingPathSumLaptop {
 
         int down = matrix[row][col] + recursion(row+1,col,matrix);
 
-        int leftDiagonal = matrix[col][row] + recursion(row+1,col-1,matrix);
+        int leftDiagonal = matrix[row][col] + recursion(row+1,col-1,matrix);
 
-        int rightDiagonal = matrix[col][row] + recursion(row+1,col+1,matrix);
+        int rightDiagonal = matrix[row][col] + recursion(row+1,col+1,matrix);
 
         return Math.max(down, Math.max(leftDiagonal,rightDiagonal));
     }
