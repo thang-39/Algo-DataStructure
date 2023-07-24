@@ -6,12 +6,23 @@ public class Lec12MaxFallingPathSum {
     public static void main(String[] args) {
         int[][] matrix1 = {{1,2,10,4},{100,3,2,1},{1,1,20,2}, {1,2,2,1}};
         int[][] matrix2 = {{10,2,3}, {3,7,2},{8,1,5}};
+        int[][] matrix3 = {{-9999,-9888,-9777,-9666,-9555}};
+        int[][] matrix4 = {{-9999,-9888,-9777,-9666,-9555},{1,10,2,4,5},{-9999,-9888,-9777,-9666,-9555},{0,0,0,0,0},{-99,-98,-97,-96,-95}};
 
         System.out.println(getMaxPathSum(matrix1));
         System.out.println(getMaxPathSum(matrix2));
 
         System.out.println(getMaxPathSumMemorization(matrix1));
         System.out.println(getMaxPathSumMemorization(matrix2));
+
+        System.out.println(getMaxPathSumMTabulation(matrix1));
+        System.out.println(getMaxPathSumMTabulation(matrix2));
+
+        System.out.println(getMaxPathSumMTabulationSpaceOptimization(matrix1));
+        System.out.println(getMaxPathSumMTabulationSpaceOptimization(matrix2));
+        System.out.println(getMaxPathSumMTabulationSpaceOptimization(matrix3));
+        System.out.println(getMaxPathSumMTabulationSpaceOptimization(matrix4));
+
 
     }
 
@@ -24,9 +35,6 @@ public class Lec12MaxFallingPathSum {
         for (int col = 0; col < matrix[0].length; col++) {
 
 //            result = Math.max(result, recursion(0,col,matrix));
-//            result = Math.max(result, recursion2(n-1,col,matrix));
-//            int temp = recursion3(n-1,col,matrix);
-//            result = Math.max(result, temp);
             result = Math.max(result,recursion4(0,col,matrix));
 
         }
@@ -41,8 +49,6 @@ public class Lec12MaxFallingPathSum {
         if (row == matrix.length - 1)
             return matrix[row][col];
 
-
-
         int up = matrix[row][col] + recursion(row+1,col,matrix);
 
         int leftDiagonal = matrix[row][col] + recursion(row+1,col-1,matrix);
@@ -52,43 +58,9 @@ public class Lec12MaxFallingPathSum {
         return Math.max(up,Math.max(leftDiagonal,rightDiagonal));
     }
 
-    private static int recursion2(int row, int col, int[][] matrix) {
-
-        if (col < 0 || col >= matrix[0].length)
-            return -(int) Math.pow(10,9);
-
-        if (row == 0)
-            return matrix[0][col];
-
-        int up = matrix[row][col] + recursion2(row-1,col,matrix);
-
-        int leftDiagonal = matrix[row][col] + recursion2(row-1,col-1,matrix);
-
-        int rightDiagonal = matrix[row][col] + recursion2(row-1,col+1,matrix);
-
-        return Math.max(up,Math.max(leftDiagonal,rightDiagonal));
-    }
-
-    private static int recursion3(int row, int col, int[][] matrix) {
-
-        if (row == 0)
-            return matrix[0][col];
-
-        int up = matrix[row][col] + recursion3(row-1,col,matrix);
-
-        int leftDiagonal = - (int) Math.pow(10,9);
-        if (col > 0)
-            leftDiagonal = matrix[row][col] + recursion3(row-1,col-1,matrix);
-
-        int rightDiagonal = - (int) Math.pow(10,9);
-        if (col < matrix[0].length-1)
-            rightDiagonal = matrix[row][col] + recursion3(row-1,col+1,matrix);
-
-        return Math.max(up,Math.max(leftDiagonal,rightDiagonal));
-    }
-
     private static int recursion4(int row, int col, int[][] matrix) {
-        if (row == matrix.length - 1) return matrix[row][col];
+        if (row == matrix.length - 1)
+            return matrix[row][col];
 
         int down = matrix[row][col] + recursion4(row+1,col,matrix);
 
@@ -136,6 +108,78 @@ public class Lec12MaxFallingPathSum {
         int rightDiagonal = matrix[row][col] + recursionMemorization(row+1,col+1,matrix,dp);
 
         return dp[row][col] = Math.max(up,Math.max(leftDiagonal,rightDiagonal));
+    }
+
+    public static int getMaxPathSumMTabulation(int[][] matrix) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+
+        int[][] dp = new int[n][m];
+
+        System.arraycopy(matrix[0],0,dp[0],0,m);
+
+        int result = Integer.MIN_VALUE;
+
+        for (int row = 1; row < n; row++) {
+            for (int col = 0; col < m; col++) {
+
+                int down = dp[row-1][col] + matrix[row][col];
+
+                int leftDiagonal = Integer.MIN_VALUE;
+                if (col > 0)
+                    leftDiagonal = dp[row-1][col-1] + matrix[row][col];
+
+                int rightDiagonal = Integer.MIN_VALUE;
+                if (col < m-1)
+                    rightDiagonal = dp[row-1][col+1] + matrix[row][col];
+
+                dp[row][col] = Math.max(down, Math.max(rightDiagonal,leftDiagonal));
+
+                if (row == n-1)
+                    result = Math.max(dp[row][col],result);
+            }
+        }
+        return result;
+    }
+
+    public static int getMaxPathSumMTabulationSpaceOptimization(int[][] matrix) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+
+        int[] dp = new int[m];
+
+        System.arraycopy(matrix[0],0,dp,0,m);
+
+        int result = Integer.MIN_VALUE;
+
+        if (n==1) {
+            for (int j : dp) {
+                result = Math.max(result, j);
+            }
+        }
+
+        for (int row = 1; row < n; row++) {
+            int[] temp = new int[m];
+            for (int col = 0; col < m; col++) {
+
+                int down = dp[col] + matrix[row][col];
+
+                int leftDiagonal = Integer.MIN_VALUE;
+                if (col > 0)
+                    leftDiagonal = dp[col-1] + matrix[row][col];
+
+                int rightDiagonal = Integer.MIN_VALUE;
+                if (col < m-1)
+                    rightDiagonal = dp[col+1] + matrix[row][col];
+
+                temp[col] = Math.max(down, Math.max(rightDiagonal,leftDiagonal));
+
+                if (row == n-1)
+                    result = Math.max(temp[col],result);
+            }
+            dp = temp;
+        }
+        return result;
     }
 
 }
