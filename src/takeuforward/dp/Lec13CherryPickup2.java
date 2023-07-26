@@ -133,7 +133,7 @@ public class Lec13CherryPickup2 {
 
     public static int maximumChocolatesTabulationSpaceOptimization(int r, int c, int[][] grid) {
 
-        int[][] dp = new int[c][c];
+         int[][] dp = new int[c][c];
 
         // base case - take last row to base case of alice and bob
         for (int alice = 0; alice < c; alice++) {
