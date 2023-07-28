@@ -1,7 +1,9 @@
+package Test;
+
 /**
  * author: Hoàng Phương Nam
  */
-public class Queue {
+public class OPQ2_20230727_HOANGPHUONGNAM {
 
     public class Queue<T> extends Thread{
         private Node<T> front;
@@ -30,6 +32,20 @@ public class Queue {
                 rear.next = newNode;
             }
             rear = newNode;
+        }
+
+        public synchronized T dequeue() {
+            if (front == null) {
+                throw new IllegalStateException("Queue is empty");
+            }
+
+            T item = front.data;
+            front = front.next;
+
+            if (front == null) {
+                rear = null;
+            }
+            return item;
         }
 
         public void display() {

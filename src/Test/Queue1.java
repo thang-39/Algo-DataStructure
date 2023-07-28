@@ -1,6 +1,6 @@
 package Test;
 
-public class Queue<T> {
+public class Queue1<T> {
     private Node<T> front;
     private Node<T> rear;
 
@@ -14,7 +14,7 @@ public class Queue<T> {
         }
     }
 
-    public Queue() {
+    public Queue1() {
         front = null;
         rear = null;
     }

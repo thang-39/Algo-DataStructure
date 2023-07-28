@@ -2,7 +2,7 @@ package Test;
 
 public class QueueTest {
     public static void main(String[] args) {
-        Queue<Integer> a = new Queue<>();
+        Queue1<Integer> a = new Queue1<>();
         a.enqueue(1);
         a.enqueue(2);
 
