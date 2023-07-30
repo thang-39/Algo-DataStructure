@@ -119,4 +119,36 @@ public class Lec17CountsSubsetsWithSumK {
 
         return prev[tar];
     }
+
+    /// for the case if  arr[i] can be 0
+
+    public static int findWays0(int[] num, int tar) {
+        int n = num.length;
+        return recursion0(n-1, tar, num);
+    }
+
+    private static int recursion0(int index, int tar, int[] num) {
+
+        // we change the base case
+        // old base case
+//        if (tar == 0) return 1;
+//        if (index == 0) {
+//            return (num[0] == tar) ? 1 : 0;
+//        }
+
+        // new base case - we need to go deep in recursion
+        if (index == 0) {
+            if (tar == 0 && num[index] == 0) return 2; // pick and non-pick 0
+            if (tar == 0 || num[0] == tar) return 1;
+            return 0;
+        }
+
+        int notPick = recursion0(index-1,tar,num);
+        int pick = 0;
+        if (num[index] <= tar) {
+            pick = recursion0(index-1,tar-num[index],num);
+        }
+
+        return pick + notPick;
+    }
 }
