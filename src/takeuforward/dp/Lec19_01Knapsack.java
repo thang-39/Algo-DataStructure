@@ -20,6 +20,16 @@ public class Lec19_01Knapsack {
         System.out.println(knapsackTabulation(new int[]{1,5,6,9,7,9,7},new int[] {1,7,1,5,1,7,7},7,37));
         System.out.println(knapsackTabulation(new int[]{6,5,1,5,6,5,9},new int[] {5,3,4,9,6,1,1},7,63));
 
+        System.out.println(knapsackTabulationSpaceOptimization(new int[]{1,2,4,5},new int[] {5,4,8,6},4,5));
+        System.out.println(knapsackTabulationSpaceOptimization(new int[]{1},new int[] {7},1,1));
+        System.out.println(knapsackTabulationSpaceOptimization(new int[]{1,5,6,9,7,9,7},new int[] {1,7,1,5,1,7,7},7,37));
+        System.out.println(knapsackTabulationSpaceOptimization(new int[]{6,5,1,5,6,5,9},new int[] {5,3,4,9,6,1,1},7,63));
+
+        System.out.println(knapsackSpaceOptimization(new int[]{1,2,4,5},new int[] {5,4,8,6},4,5));
+        System.out.println(knapsackSpaceOptimization(new int[]{1},new int[] {7},1,1));
+        System.out.println(knapsackSpaceOptimization(new int[]{1,5,6,9,7,9,7},new int[] {1,7,1,5,1,7,7},7,37));
+        System.out.println(knapsackSpaceOptimization(new int[]{6,5,1,5,6,5,9},new int[] {5,3,4,9,6,1,1},7,63));
+
     }
 
     static int knapsack(int[] weight, int[] value, int n, int maxWeight) {
@@ -28,8 +38,6 @@ public class Lec19_01Knapsack {
 
     private static int recursion(int index, int maxWeight,
                                  int[] weight, int[] value) {
-
-
         if (index == 0) {
             if (weight[0] <= maxWeight) return value[0];
             else return 0;
@@ -93,6 +101,50 @@ public class Lec19_01Knapsack {
             }
         }
         return dp[n-1][maxWeight];
+    }
+
+    static int knapsackTabulationSpaceOptimization(int[] weight, int[] value, int n, int maxWeight) {
+        int[] prev = new int[maxWeight+1];
+
+        for (int w = weight[0]; w <= maxWeight; w++)
+            prev[w] = value[0];
+
+
+        for (int index = 1; index < n; index++) {
+            int[] cur = new int[maxWeight+1];
+            for (int w = 0; w <= maxWeight; w++) {
+                int notPick = prev[w];
+
+                int pick = Integer.MIN_VALUE;
+                if (weight[index] <= w) {
+                    pick = value[index] + prev[w-weight[index]];
+                }
+                cur[w] = Math.max(pick,notPick);
+            }
+            prev = cur;
+        }
+        return prev[maxWeight];
+    }
+
+    static int knapsackSpaceOptimization(int[] weight, int[] value, int n, int maxWeight) {
+        int[] prev = new int[maxWeight+1];
+
+        for (int w = weight[0]; w <= maxWeight; w++)
+            prev[w] = value[0];
+
+
+        for (int index = 1; index < n; index++) {
+            for (int w = maxWeight; w >= 0; w--) {
+                int notPick = prev[w];
+
+                int pick = Integer.MIN_VALUE;
+                if (weight[index] <= w) {
+                    pick = value[index] + prev[w-weight[index]];
+                }
+                prev[w] = Math.max(pick,notPick);
+            }
+        }
+        return prev[maxWeight];
     }
 
 
